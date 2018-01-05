@@ -45,7 +45,7 @@ class BalanceWrapper extends React.Component {
 
         let Component = this.props.wrap;
         return (
-            <Component {...this.state} {..._.omit(this.props, ['wrap'])} orders={ordersByAsset} balanceAssets={Immutable.List(balanceAssets)} />
+            <Component {...this.state} {...this.props} {..._.omit(this.props, ["wrap"])} orders={ordersByAsset} balanceAssets={Immutable.List(balanceAssets)} />
         );
     };
 }

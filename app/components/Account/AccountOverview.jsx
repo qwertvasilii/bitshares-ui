@@ -23,6 +23,7 @@ import LinkToAssetById from "../Utility/LinkToAssetById";
 import utils from "common/utils";
 import BorrowModal from "../Modal/BorrowModal";
 import ReactTooltip from "react-tooltip";
+import WithdrawModalWrapper from "../DepositWithdraw/WithdrawModalNew";
 import SimpleDepositWithdraw from "../Dashboard/SimpleDepositWithdraw";
 import SimpleDepositBlocktradesBridge from "../Dashboard/SimpleDepositBlocktradesBridge";
 import { Apis } from "bitsharesjs-ws";
@@ -167,6 +168,13 @@ class AccountOverview extends React.Component {
         this.refs.settlement_modal.show();
     }
 
+    _onWithdrawAsset(asset, e) {
+        e.preventDefault();
+        this.setState({withdrawAsset: asset}, () => {
+            this.refs.withdraw_modal_new.show();
+        });
+    }
+
     _hideAsset(asset, status) {
         SettingsActions.hideAsset(asset, status);
     }
@@ -250,8 +258,13 @@ class AccountOverview extends React.Component {
             const includeAsset = !hiddenAssets.includes(asset_type);
             const hasBalance = !!balanceObject.get("balance");
             const hasOnOrder = !!orders[asset_type];
+            const thisAssetName = asset.get("symbol").split(".");
             const canDepositWithdraw = !!this.props.backedCoins.get("OPEN", []).find(a => a.symbol === asset.get("symbol"));
-            const canWithdraw = canDepositWithdraw && (hasBalance && balanceObject.get("balance") != 0);
+            const canWithdraw =
+                (hasBalance && balanceObject.get("balance") != 0) && 
+                !!this.props.backedCoins.get("OPEN", []).find(a => a.backingCoinType === thisAssetName[1]) ||
+                !!this.props.backedCoins.get("RUDEX", []).find(a => a.backingCoin === thisAssetName[1]);
+            //const canWithdraw = canDepositWithdraw && (hasBalance && balanceObject.get("balance") != 0);
             const canBuy = !!this.props.bridgeCoins.get(symbol);
 
             balances.push(
@@ -313,9 +326,7 @@ class AccountOverview extends React.Component {
                     <td>
                         {canWithdraw && this.props.isMyAccount? (
                             <span>
-                                <a className={!canWithdraw ? "disabled" : ""} onClick={canWithdraw ? this._showDepositWithdraw.bind(this, "withdraw_modal", assetName, false) : () => {}}>
-                                    <Icon name="withdraw" className="icon-14px" />
-                                </a>
+                                <Icon style={{cursor: "pointer"}} name="withdraw" className="icon-14px" onClick={this._onWithdrawAsset.bind(this, assetName)} />
                             </span>
                         ) : emptyCell}
                     </td>
@@ -694,6 +705,16 @@ class AccountOverview extends React.Component {
                     balances={this.props.balances}
                     {...currentDepositAsset}
                     isDown={this.props.gatewayDown.get("OPEN")}
+                />
+
+                {/* Withdraw Modal New */}
+                <WithdrawModalWrapper
+                    ref="withdraw_modal_new"
+                    modalId="withdraw_modal_new"
+                    account={this.props.account}
+                    preferredAsset={preferredAsset}
+                    balances={this.props.balances}
+                    settings={this.props.settings}
                 />
 
                 {/* Withdraw Modal */}

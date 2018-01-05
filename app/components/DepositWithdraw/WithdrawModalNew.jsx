@@ -10,6 +10,7 @@ import {BalanceValueComponent} from "../Utility/EquivalentValueComponent";
 import { convertValueToPriceInPreferredCurrency } from "../Utility/TotalBalanceValue";
 import GatewayStore from "stores/GatewayStore";
 import GatewayActions from "actions/GatewayActions";
+import {ChainStore} from "bitsharesjs/es";
 import AssetStore from "stores/AssetStore";
 import AssetActions from "actions/AssetActions";
 import MarketsStore from "stores/MarketsStore";
@@ -29,11 +30,12 @@ import BalanceComponent from "../Utility/BalanceComponent";
 
 window.action = AccountActions;
 
-class WithdrawModalNew extends React.Component {
+class WithdrawModalComponent extends React.Component {
     constructor(props){
         super(props);
 
         this.state = {
+            open: false,
             symbol: "",
             gateway: "",
             fee: 0,
@@ -44,7 +46,7 @@ class WithdrawModalNew extends React.Component {
             loadedFromAsset: "",
             loadedToAsset: "",
             userEstimate: null
-        }
+        };
     }
 
     shouldComponentUpdate(np, ns){
@@ -61,7 +63,6 @@ class WithdrawModalNew extends React.Component {
     }
 
     componentDidMount(){
-        ZfApi.publish("withdrawModal", "open");
     }
 
     componentDidUpdate(){
@@ -106,9 +107,9 @@ class WithdrawModalNew extends React.Component {
 
     onAssetSelected(value){
         try{
-            let s = value.split(".")
+            let s = value.split(".");
             if(s.length == 1){
-               this.setState({gateway: null, symbol: s[0], userEstimate: null});
+                this.setState({gateway: null, symbol: s[0], userEstimate: null});
             } else {
                 this.setState({gateway: s[0], symbol: s[1], userEstimate: null});
             }
@@ -147,7 +148,7 @@ class WithdrawModalNew extends React.Component {
 
     render() {
         const { state, props } = this;
-        let { preferredCurrency, assets, marketStats, balances } = props;
+        let { preferredCurrency, preferredAsset, settings, assets, marketStats, balances, account } = props;
         let { symbol, quantity, loadedFromAsset, loadedToAsset, gateway, userEstimate } = this.state;
         let estimatedValue = 0;
         let coreAsset = null;
@@ -175,19 +176,20 @@ class WithdrawModalNew extends React.Component {
         if(preferredCurrency && symbol){
             let toAsset = null;
             let fromAsset = null;      
-
+            
             assets.forEach((item)=>{
                 item = item.get ? item : Immutable.fromJS(item);
                 if(item.get("id") == "1.3.0") coreAsset = item;
                 if(item.get("symbol") == preferredCurrency) toAsset = item;
                 if(item.get("symbol") == gateway+"."+symbol){
-                  fromAsset = item;
-                  withdrawalCurrencyPrecision = item.get("precision");
+                    fromAsset = item;
+                    withdrawalCurrencyPrecision = item.get("precision");
                 }
-            })
+            });
 
+            console.log(equivalentPrice(preferredAsset, fromAsset, toAsset, marketStats, true));
             if(quantity && fromAsset && toAsset){
-              estimatedValue = quantity * equivalentPrice(coreAsset, fromAsset, toAsset, marketStats, true);
+                estimatedValue = quantity * equivalentPrice(preferredAsset, fromAsset, toAsset, marketStats, true);
             }
         }
 
@@ -199,15 +201,15 @@ class WithdrawModalNew extends React.Component {
             convertedBalance = Number(decimalPart + "." + mantissa);
         }
 
-        console.log('convertedBalance', convertedBalance, 'quantity', quantity, 'estimatedValue', estimatedValue);
+        console.log("convertedBalance", convertedBalance, "quantity", quantity, "estimatedValue", estimatedValue);
         let canCoverWithdrawal = convertedBalance ? convertedBalance >= quantity : true;
 
-        let halfWidth = {width: "50%", float: "left", boxSizing: "border-box"}
+        let halfWidth = {width: "50%", float: "left", boxSizing: "border-box"};
         let leftColumn = _.extend({paddingRight: "0.5em"}, halfWidth);
         let rightColumn = _.extend({paddingLeft: "0.5em"}, halfWidth);
-        let buttonStyle = {width: "100%"}
+        let buttonStyle = {width: "100%"};
 
-        return <BaseModal id="withdrawModal">
+        return <div>
           <DepositWithdrawAssetSelector onSelect={this.onAssetSelected.bind(this)} onChange={this.onAssetChanged.bind(this)} />
           {symbol == "BTS" || !symbol ? null : <div>
             <label className="left-label"><Translate content="gateway.gateway" /></label>
@@ -259,11 +261,72 @@ class WithdrawModalNew extends React.Component {
               <button style={buttonStyle} className="button"><Translate content="modal.withdraw.withdraw" /></button>
             </div>
           </div>
-        </BaseModal>
+        </div>;
     }
 };
 
-const ConnectedWithdrawModal = connect(WithdrawModalNew, {
+export default class WithdrawModal extends React.Component {
+    static propTypes = {
+        account: ChainTypes.ChainAccount.isRequired
+    };
+    static defaultProps = {
+        account: ""
+    };
+    
+    constructor() {
+        super();
+        this.state = { open: false };
+    }
+
+    show() {
+        this.setState({ open: true }, () => {
+            ZfApi.publish(this.props.modalId, "open");
+        });
+    }
+
+    onClose() {
+        this.setState({ open: false });
+    }
+
+    render() {
+        //console.log("balances", this.props.account.get("balances"));
+        //console.log("balances", this.props.account.get("balances"));
+        return (this.state.open ? 
+            //<WithdrawModalWrapper {...this.props} open={this.state.open} onClose={this.onClose.bind(this)}  /> : 
+            <BalanceWrapper wrap={WithdrawModalWrapper} {...this.props} open={this.state.open} onClose={this.onClose.bind(this)} balances={this.props.account.get("balances")} /> :
+        null);
+    }
+}
+
+WithdrawModal = BindToChainState(WithdrawModal);
+
+WithdrawModal = connect(WithdrawModal, {
+    listenTo() {
+        return [AccountStore];
+    },
+    getProps() {
+        return {
+            account: AccountStore.getState().currentAccount 
+        };
+    }
+});
+
+class WithdrawModalWrapper extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <BaseModal className="test" onClose={this.props.onClose.bind(this)} id={this.props.modalId} overlay={true}>
+                {this.props.open ? <WithdrawModalComponent {...this.props} /> : null}
+            </BaseModal>
+        );
+    }
+
+}
+
+WithdrawModalWrapper = connect(WithdrawModalWrapper, {
     listenTo() {
         return [GatewayStore, AssetStore, SettingsStore, MarketsStore];
     },
@@ -279,6 +342,8 @@ const ConnectedWithdrawModal = connect(WithdrawModalNew, {
     }
 });
 
+{/*
+
 class WithdrawModalWrapper extends React.Component {
     static propTypes = {
         account: ChainTypes.ChainAccount.isRequired
@@ -288,10 +353,24 @@ class WithdrawModalWrapper extends React.Component {
         account: ""
     };
 
-    render(){
-      const { props } = this;
-      console.log("balances", props.account.get("balances"));
-      return <BalanceWrapper wrap={ConnectedWithdrawModal} {...props} balances={props.account.get("balances")} />
+    constructor() {
+        console.log("WithdrawModalWrapper - constructor");
+        super();
+        this.state = {open: false};
+    }
+
+    show() {
+        console.log("show");
+        this.setState({ open: true }, () => {
+            ZfApi.publish(this.props.modalId, "open");
+        });
+    }
+
+    render() {
+        const { props, state } = this;
+        console.log(state);
+        console.log("balances", props.account.get("balances"));
+        return <BalanceWrapper wrap={ConnectedWithdrawModal} {...props} balances={props.account.get("balances")} />;
     }
 }
 
@@ -307,3 +386,4 @@ const ConnectedWrapper = connect(BindToChainState(WithdrawModalWrapper, {}), {
 });
 
 export default ConnectedWrapper;
+*/}
