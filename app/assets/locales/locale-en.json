@@ -1,24 +1,10 @@
 {
-    "counterpart": {
-        "formats": {
-            "date": {
-                "short_custom": "%e %b %Y"
-            }
-        }
-    },
   "languages": {
     "en": "English",
-    "cn": "简体中文",
-    "fr": "Français",
-    "ko": "한국어",
-    "de": "Deutsch",
-    "es": "Español",
-    "it": "Italiano",
-    "tr": "Turkish",
     "ru": "Русский"
   },
   "incognito": {
-    "no_support": "This Bitshares Wallet relies on Local Storage and IndexedDB which are not persistent when using Incognito Browsing. We recommend using a regular browsing session.",
+    "no_support": "This Neuron Wallet relies on Local Storage and IndexedDB which are not persistent when using Incognito Browsing. We recommend using a regular browsing session.",
     "ignore": "I understand, continue."
   },
   "sync_fail": {
@@ -27,7 +13,7 @@
     "sub_text_2" : "Once you've synchronized your clock, please refresh this page.<br/><br/>If your clock is already correct, the API server you're using could be out of sync. In that case, please try a different server from the list below."
   },
   "header": {
-    "title": "BitShares UI",
+    "title": "Neuron UI",
     "account": "Account",
     "dashboard": "Dashboard",
     "explorer": "Explore",
@@ -40,7 +26,7 @@
     "create_asset": "Create Asset",
     "update_asset": "Update Asset",
     "lock": "Log out (lock the local wallet)",
-    "unlock": "Local Wallet Login",
+    "unlock": "Log in (unlock the local wallet)",
     "unlock_password": "Cloud Wallet Login",
     "unlock_short": "Login",
     "help": "Help",
@@ -68,7 +54,7 @@
     "cr_danger": "This position is currently being margin called. Consider adding collateral to bring the collateral ratio above %(mr)s or closing the position.",
     "cr_warning": "This position has a low level of collateral, and will get margin called if the collateral ratio drops below %(mr)s. Consider adding collateral or closing the position.",
     "propose_scam": "This proposal was created by a known scammer, do not approve it!",
-    "login": "This BitShares wallet does not offer a traditional login but instead simply locks or unlocks a wallet that is <b>only</b> stored locally in your browser.<br/><br/>Whenever you close the wallet it will be locked and you will effectively be logged out.",
+    "login": "This Neuron wallet does not offer a traditional login but instead simply locks or unlocks a wallet that is <b>only</b> stored locally in your browser.<br/><br/>Whenever you close the wallet it will be locked and you will effectively be logged out.",
     "buy_min": "You will receive at minimum this amount. If there are matching orders with a cheaper price than you specified, you will receive more than this amount.",
     "borrow": "Borrow %(asset)s from the network. This creates a smart contract that locks your collateral until you either modify the position or a margin call is required.",
     "transfer_actions": "Click here to make a transfer, or to deposit/withdraw those assets that support it.",
@@ -90,9 +76,9 @@
     "existing_user": "Existing user",
     "restore": "Restore",
     "advanced": "Advanced",
-    "intro_text_title": "Welcome to BitShares",
+    "intro_text_title": "Welcome to Neuron",
     "intro_text_1": "Your Decentralized Exchange",
-    "intro_text_2": "<b>The DEX</b> is inherently decentralized, enabling you to trade the BitShares core token (BTS) and a range of trustless price-stable, market-pegged assets such as bitUSD, bitCNY, bitBTC, bitGold and more. These assets can all be traded with <b>zero</b> counter-party risk, putting you in total control of your funds.",
+    "intro_text_2": "<b>The DEX</b> is inherently decentralized, enabling you to trade the Neuron core token (BTS) and a range of trustless price-stable, market-pegged assets such as bitUSD, bitCNY, bitBTC, bitGold and more. These assets can all be traded with <b>zero</b> counter-party risk, putting you in total control of your funds.",
     "intro_text_3": "<b>The DEX</b> also enables creation of user-issued assets (UIAs), which can be traded against any other UIAs or trustless assets on the platform.  One well-known issuer on The DEX is <b>OpenLedger</b>, offering a host of assets including BTC, ETH, STEEM, DASH, LTC, DOGE, and many more",
     "intro_text_4": "This gives cryptocurrency traders a unique blend of traditional and decentralized trading, all in a familiar exchange interface. Happy trading!",
     "in_open": "This is the amount of %(asset)s you have in open orders.",
@@ -102,7 +88,7 @@
     "see_open": "See open orders",
     "total_estimate": "This is the estimated value of all your assets, including any hidden assets, open orders, debt and collateral. The estimate is done using only live blockchain data and may not be perfectly accurate.",
     "trade": "Trade",
-    "welcome": "Welcome to BitShares",
+    "welcome": "Welcome to Neuron",
     "asset": "Asset",
     "market_value": "Market Value",
     "hour_24": "24hr Change",
@@ -113,7 +99,7 @@
     "more": "see more",
     "deposit_withdraw": "Deposit/Withdraw",
     "as_collateral": "Collateral",
-    "open_orders": "Open Orders",
+    "open_orders": "Open orders",
     "total_value": "Total value",
     "show_hidden": "Hidden",
     "hide_hidden": "Active",
@@ -176,7 +162,7 @@
       "claim": "Claim now",
       "available": "Available to claim",
       "referral_link": "Your referral link",
-      "referral_text": "Give this to link to people you want to refer to BitShares"
+      "referral_text": "Give this to link to people you want to refer to Neuron"
     },
     "user_issued_assets": {
       "symbol": "Symbol",
@@ -243,8 +229,8 @@
       "active": "Active Permissions",
       "owner": "Owner Permissions",
       "memo_key": "Memo key",
-      "publish": "Save",
-      "reset": "Cancel",
+      "publish": "Publish Changes",
+      "reset": "Reset Changes",
       "add": "Add Permission",
       "type": "Type",
       "key": "Key/Name",
@@ -293,7 +279,7 @@
       "url": "Webpage",
       "support": "Support",
       "workers": "Budget Items",
-      "publish": "Save",
+      "publish": "Publish Changes",
       "add_witness": "Add",
       "remove_witness": "Remove",
       "remove_committee": "Remove",
@@ -303,9 +289,9 @@
       "approve_worker": "Approve",
       "reject_worker": "Reject",
       "worker_account": "Worker account",
-      "total_votes": "Votes",
+      "total_votes": "Net votes",
       "votes_against": "Votes against",
-      "daily_pay": "Daily Pay",
+      "daily_pay": "Pay",
       "daily": "daily",
       "max_pay": "Maximum total pay",
       "unclaimed": "Unclaimed pay",
@@ -322,25 +308,21 @@
       "funding": "Funding",
       "total_budget": "Total available daily worker budget",
       "unused_budget": "Unused daily worker budget",
-      "new": "Proposed",
-      "active": "Active",
+      "new": "Proposed workers",
+      "active": "Active workers",
       "w_approved_by": "Witnesses approved by %(account)s",
       "w_not_approved_by": "Witnesses not approved by %(account)s",
       "cm_approved_by": "Committee members approved by %(account)s",
       "cm_not_approved_by": "Committee members not approved by %(account)s",
       "already": "Account is already in the list",
       "proxy_known": "Or choose an account as your proxy",
-      "expired": "Expired",
+      "expired": "Expired workers",
       "witness": "Witness name",
       "committee": "Committee member name",
       "toggle": "Toggle vote",
       "supported": "Supported",
       "active_short": "Active",
-      "inactive": "Backup",
-      "about": "About",
-      "create_worker": "Create a new worker",
-      "line": "Line",
-      "save_finish": "Click save to finish"
+      "inactive": "Inactive"
     },
     "options": {
       "num_witnesses": "Desired Witnesses",
@@ -450,7 +432,7 @@
     "limit_order_buy": "{account} placed an order to buy {amount} at {price}",
     "limit_order_cancel": "{account} cancelled order #%(order)s",
     "call_order_update": "{account} changed {debtSymbol} debt by {debt} and collateral by {collateral}",
-    "asset_reserve": "{account} burned (reserved) {amount}",
+    "asset_reserve": "{account} reserved (burnt) {amount}",
     "asset_issue": "{account} issued {amount} to {to}",
     "asset_fund_fee_pool": "{account} funded {asset} fee pool with {amount}",
     "asset_create": "{account} created the asset {asset}",
@@ -497,7 +479,7 @@
     "reject": "Reject",
     "override_transfer": "Transfer {amount} from {from} to {to} by authority of {issuer}",
     "asset_issue": "Issue {amount} to {to} using {account}",
-    "asset_reserve": "Burn (reserve) {amount} using {account}",
+    "asset_reserve": "Reserve (burn) {amount} using {account}",
     "vesting_balance_withdraw": "Withdraw {amount} from vesting balance of {account}",
     "feed_producer": "Update the feed producers for the asset {asset} using the account {account}",
     "call_order_update": "Change {account} {debtSymbol} debt by {debt} and collateral by {collateral}"
@@ -554,7 +536,6 @@
     "deposit_to": "Deposited to account",
     "claimed": "Total claimed",
     "borrow_amount": "Debt",
-    "borrower": "Borrower",
     "funding_account": "Funding account",
     "delta_collateral": "Collateral change",
     "delta_debt": "Debt change",
@@ -566,7 +547,7 @@
     "outputs": "Outputs",
     "inputs": "Inputs",
     "settlement_date": "Settlement date",
-    "asset_reserve": "burned asset amount",
+    "asset_reserve": "reserved asset amount",
     "trxTypes": {
       "all": "Show all",
       "transfer": "Transfer",
@@ -583,7 +564,7 @@
       "asset_update_bitasset": "Update SmartCoin",
       "asset_update_feed_producers": "Update asset feed producers",
       "asset_issue": "Issue asset",
-      "asset_reserve": "Burn asset",
+      "asset_reserve": "Reserve asset",
       "asset_fund_fee_pool": "Fund asset fee pool",
       "asset_settle": "Asset settlement",
       "asset_global_settle": "Global asset settlement",
@@ -752,9 +733,6 @@
         "publisher": "Publisher",
         "published": "Published"
       },
-      "margin_positions": {
-        "title": "Margin positions"
-      },
       "whitelist": {
             "whitelist_authorities": "Whitelist authorities",
             "blacklist_authorities": "Blacklist authorities",
@@ -785,7 +763,7 @@
     },
     "workers": {
       "title": "Worker name",
-      "period": "Duration",
+      "period": "Worker duration",
       "daily_pay": "Daily pay (BTS)",
       "website": "Website",
       "vesting_pay": "Salary vesting period (days)",
@@ -808,7 +786,7 @@
       "type": "Fee Type",
       "fee": "Standard Fee",
       "feeeq": "(equivalent)",
-      "feeltm": "Lifetime Member Fee",
+      "feeltm": "Lifetime/Annual Member Fee",
       "feeltmeq": "(equivalent)"
     }
   },
@@ -839,6 +817,7 @@
     "lightTheme": "Light theme",
     "olDarkTheme": "Openledger dark",
     "reset": "Reset settings",
+    "disableChat": "Disable chat",
     "general": "General",
     "wallet": "Local Wallet",
     "accounts": "Accounts",
@@ -886,7 +865,7 @@
     "high_latency": "High latency"
   },
   "footer": {
-    "title": "BitShares",
+    "title": "Neuron",
     "block": "Head block",
     "loading": "Loading...",
     "backup": "A Backup is Required",
@@ -1019,7 +998,7 @@
     "create_wallet": "Create new local wallet",
     "create_importkeys_text": "In order to import keys, you first need to create a local wallet to contain the keys. Complete the dialog below to create a new local wallet.",
     "create_wallet_backup": "Create new wallet from backup",
-    "import_bts1": "Import from BitShares 0.9.3c",
+    "import_bts1": "Import from Neuron 0.9.3c",
     "setup_wallet": "Setup your local wallet",
     "delete_wallet": "Delete Local Wallet",
     "delete_confirm_line1": "Are you ABSOLUTELY sure?",
@@ -1035,7 +1014,7 @@
     "create_backup": "Create Backup",
     "backup_brainkey": "Backup Brainkey",
     "create_backup_of": "Create backup now",
-    "import_backup": "Import BitShares 2.0 backup (.bin file)",
+    "import_backup": "Import Neuron 2.0 backup (.bin file)",
     "import_backup_choose": "Please select your backup file in the dialog below. This is completely safe as the file is not uploaded anywhere and never leaves your browser.",
     "restore_backup": "Restore Backup",
     "import_keys": "Import Keys",
@@ -1051,7 +1030,7 @@
     "done": "Done",
     "verify": "I've written it down",
     "invalid_format": "Invalid Format",
-    "enter_password": "Password",
+    "enter_password": "Enter Password",
     "confirm_password": "Confirm Password",
     "pass_incorrect": "Incorrect password",
     "confirm_error": "The confirmation does not match the password",
@@ -1084,14 +1063,14 @@
     "need_backup": "This local wallet needs a backup",
     "noneed_backup": "No backup is needed",
     "restore": "Restore Local Wallet from Backup",
-    "create_text": "The BitShares local wallet is stored in your browser, it is not stored in the cloud. A wallet can contain multiple accounts and can be easily transferred between browsers and computers using a backup file.",
-    "account_create_wallet_text": "This password will be used to create a new BitShares local wallet for you, which will only be stored locally in your browser. A BitShares wallet can contain multiple accounts and can be easily transferred between browsers and computers using a backup file.",
+    "create_text": "The Neuron local wallet is stored in your browser, it is not stored in the cloud. A wallet can contain multiple accounts and can be easily transferred between browsers and computers using a backup file.",
+    "account_create_wallet_text": "This password will be used to create a new Neuron local wallet for you, which will only be stored locally in your browser. A Neuron wallet can contain multiple accounts and can be easily transferred between browsers and computers using a backup file.",
     "create_account_text": "The account name you choose needs to be unique, as it will be registered publicly on the blockchain and will be your identifer for any transactions you make.",
     "first_account_paid": "Since this is your first account, a faucet will pay the registration fee for you.",
     "not_first_account": "Since you already have an account, you will need to pay for this new account yourself. In order to do so, your account needs to have lifetime membership, which can be bought in the account page.",
     "must_be_ltm": "The fee paying account must be a lifetime member to perform that operation.",
     "backup_explain": "Clicking on the button below will generate a backup file with a .bin extension. This file is encrypted with your wallet password, and contains all the private keys for your accounts. It can be used to restore your wallet, or move it to a different computer/browser.",
-    "backup_new_account": "Congratulations, you've just created a new account on the Bitshares blockchain! It is strongly recommended that you make a backup of your wallet now. Without a backup there is no way to restore your account if something happens to your computer.",
+    "backup_new_account": "Congratulations, you've just created a new account on the Neuron blockchain! It is strongly recommended that you make a backup of your wallet now. Without a backup there is no way to restore your account if something happens to your computer.",
     "brainkey_not_backed_up": "This brainkey has never been backed up",
     "brainkey_backed_up": "This brainkey was last backed up",
     "new_password": "New password",
@@ -1110,8 +1089,8 @@
     "import_bts": "Import a BTS 0.9.3c key export",
     "import_private_key": "Import a private key",
     "wallet_browser": "Your Web Browser is your Wallet",
-    "has_wallet": "When you create your first BitShares account, a BitShares local wallet will be automatically created as well and stored in your browser. This local wallet is encrypted with your password, and will contain any private keys belonging to your accounts. It is important that you take the time to backup this wallet once created!",
-    "go_get_started": "Getting Started",
+    "has_wallet": "When you create your first Neuron account, a Neuron local wallet will be automatically created as well and stored in your browser. This local wallet is encrypted with your password, and will contain any private keys belonging to your accounts. It is important that you take the time to backup this wallet once created!",
+    "go_get_started": "See Get Started tips",
     "wallet_crucial": "Your local wallet is <strong>only stored</strong> in your browser, so it is crucial that you create a backup that will enable you to recover your wallet if the data in your browser is lost! <strong>No one else can restore your account if you lose your backup.</strong>",
     "wallet_move": "This backup file can also be used to move your local wallet to different computers or different browsers. In order to restore your local wallet using this backup <strong>you will also need your password!</strong>",
     "wallet_lose_warning": "<strong>IMPORTANT: If you lose your local wallet or your pass phrase you will be unable to access any of your funds again. Make sure you store the backup somewhere safe, and memorize or write down your password!</strong>",
@@ -1123,14 +1102,14 @@
     "tips_settings": "Change the settings",
     "tips_account": "See your new account",
     "link_account": "Account",
-    "wallet_new": "New BitShares account",
+    "wallet_new": "New Neuron account",
     "create_w_a": "Create a local wallet containing an account",
     "create_a": "Create a new blockchain account",
     "create_success": "Your local wallet has been created",
     "all_set": "You're all set!",
     "step_1": "Create a wallet",
     "step_2": "Create a backup",
-    "step_3": "Getting Started",
+    "step_3": "Get Started",
     "congrat": "Congratulations, you're ready!",
     "tips_explore": "Now that you've successfully created an account and downloaded the backup, it's time to get started. Click on one of the links below to start exploring.",
     "tips_header": "You can also find these same links in the top menu, and in the drop-down menu next to your account name.",
@@ -1165,11 +1144,11 @@
     "current_pass": "Current password",
     "no_wallet": "You do not have a local wallet yet",
     "generated": "Generated password",
-    "account_exp": "This account will be created on the blockchain and will be your address for any transfers you want to make! <strong>There are no long Bitcoin-style addresses in Bitshares!</strong>",
+    "account_exp": "This account will be created on the blockchain and will be your address for any transfers you want to make! <strong>There are no long Bitcoin-style addresses in Neuron!</strong>",
     "understand_1": "I understand that no one can recover my password if I lose or forget it",
     "understand_2": "I have written down or otherwise stored my password",
     "understand_3": " I understand that I will lose access to my funds if I lose my password",
-    "bts_rules": "The first rule of BitShares is: Do not lose your password.<br/>The second rule of BitShares is: Do not lose your password.<br />The third rule of BitShares is: We cannot recover your password.<br />The fourth rule: If you can remember the password, it's not secure.<br />The fifth rule: Use only randomly-generated passwords.<br />The sixth rule: Do not tell anyone your password.<br />The seventh rule: Always back up your password.",
+    "bts_rules": "The first rule of Neuron is: Do not lose your password.<br/>The second rule of Neuron is: Do not lose your password.<br />The third rule of Neuron is: We cannot recover your password.<br />The fourth rule: If you can remember the password, it's not secure.<br />The fifth rule: Use only randomly-generated passwords.<br />The sixth rule: Do not tell anyone your password.<br />The seventh rule: Always back up your password.",
     "ok_done": "OK, take me to the dashboard"
   },
   "borrow": {
@@ -1212,10 +1191,10 @@
       "submit": "Settle asset"
     },
     "reserve": {
-      "title": "Burn (reserve) asset",
-      "amount": "Amount to burn",
-      "from": "Account to burn from",
-      "submit": "Burn"
+      "title": "Reserve (burn) asset",
+      "amount": "Amount to reserve",
+      "from": "Account to reserve from",
+      "submit": "Reserve"
     },
     "confirmation": {
       "title": "The address you entered does not appear valid, are you sure you want to make the withdrawal?",
@@ -1243,7 +1222,7 @@
     "connected": "Connected",
     "not_connected": "Not connected",
     "browser": "Unsupported browser",
-    "browser_text": "The Browser you are using has not been fully tested to support the BitShares Wallet. We highly recommend that you backup your local wallet and import it using the Chrome Browser until we have had more time to fully test your browser of choice. Use at your own risk.",
+    "browser_text": "The Browser you are using has not been fully tested to support the Neuron Wallet. We highly recommend that you backup your local wallet and import it using the Chrome Browser until we have had more time to fully test your browser of choice. Use at your own risk.",
     "understand": "I understand"
   },
   "refcode": {
@@ -1279,8 +1258,8 @@
     "symbol": "Symbol",
     "website": "Visit the website",
     "deposit_to": "Please send your %(asset)s to the address below",
-    "add_funds": "Quickly and easily add funds to your BitShares account <strong>%(account)s</strong>. This service is provided by Openledger.",
-    "withdraw_funds": "You are going to withdraw funds from your BitShares account to your external %(asset)s account.",
+    "add_funds": "Quickly and easily add funds to your Neuron account <strong>%(account)s</strong>. This service is provided by Openledger.",
+    "withdraw_funds": "You are going to withdraw funds from your Neuron account to your external %(asset)s account.",
     "balance_asset": "Current %(asset)s balance",
     "withdraw_placeholder": "Please enter your %(asset)s address",
     "balance": "Current balance",
@@ -1335,6 +1314,23 @@
     "unavailable_RUDEX": "The RuDEX Gateway is down or not responding",
     "unavailable_TRADE": "The Blocktrades Bridge is down or not responding"
   },
+  "chat": {
+    "title": "Chat",
+    "button": "Chat",
+    "send": "Send",
+    "color": "Username color",
+    "user": "Username",
+    "done": "Done",
+    "reconnect": "Reconnect",
+    "welcome_user": "Welcome to Neuron",
+    "users": "%(userCount)s users online",
+    "welcome": "Please visit Neuron via Telegram or Discord!",
+    "disconnected": "You are currently not connected to any peers or the central server, please click below to reconnect. If you are unable to connect, this might mean the server is down, please try again later.",
+    "rate": "Please wait at least 2s before posting a new message",
+    "disabled": "Chat Options",
+    "enable": "Enable chat now",
+    "telegram_link": "<p>Please visit the Neuron Telegram group on: <a href='https://t.me/NeuronDEX' target='blank' rel='noopener noreferrer'>https://t.me/NeuronDEX</a></p><p>Neuron is also on Discord: <a href='https://discord.gg/GsjQfAJ' target='blank' rel='noopener noreferrer'>https://discord.gg/GsjQfAJ</a></p>"
+    },
     "trx_error": {
         "expire": "Your transaction has expired without being confirmed, please try again later."
     }

@@ -2,16 +2,14 @@ import Immutable from "immutable";
 import alt from "alt-instance";
 import BlockchainActions from "actions/BlockchainActions";
 import {ChainStore} from "bitsharesjs/es";
-
-import {
-    Block
-}
-from "./tcomb_structs";
+import {Block} from "./tcomb_structs";
+//import { block_header } from "bitsharesjs/es/serializer/src/operations";
 
 class BlockchainStore {
     constructor() {
         // This might not need to be an immutable map, a normal structure might suffice..
         this.blocks = Immutable.Map();
+        this.block_headers = Immutable.Map();
         this.latestBlocks = Immutable.List();
         this.latestTransactions = Immutable.List();
         this.rpc_connection_status = null;
@@ -19,6 +17,7 @@ class BlockchainStore {
 
         this.bindListeners({
             onGetBlock: BlockchainActions.getBlock,
+            onGetBlockHeader: BlockchainActions.getBlockHeader,
             onGetLatest: BlockchainActions.getLatest,
             onUpdateRpcConnectionStatus: BlockchainActions.updateRpcConnectionStatus
         });
@@ -28,6 +27,9 @@ class BlockchainStore {
 
     onGetBlock(block) {
         if (!this.blocks.get(block.id)) {
+            if (!/Z$/.test(block.timestamp)) {
+                block.timestamp += "Z";
+            }
             block.timestamp = new Date(block.timestamp);
             this.blocks = this.blocks.set(
                 block.id,
@@ -36,10 +38,28 @@ class BlockchainStore {
         }
     }
 
+    onGetBlockHeader(block) {
+        if (!this.block_headers.get(block.id)) {
+            // if (!/Z$/.test(block.timestamp)) {
+            //     block.timestamp += "Z";
+            // }
+            //console.log("BLock ", block);
+            //console.log(block.timestamp);
+            block.timestamp = new Date(block.timestamp);
+            this.block_headers = this.block_headers.set(
+                block.id,
+                Block(block)
+            );
+            //console.log("bh: ", this.block_headers);
+        }
+    }
+
     onGetLatest(payload) {
         let {block, maxBlock} = payload;
         if (typeof block.timestamp === "string") {
-            block.timestamp += "+00:00";
+            if (!/Z$/.test(block.timestamp)) {
+                block.timestamp += "Z";
+            }
         }
         block.timestamp = new Date(block.timestamp);
         if (block.id > maxBlock - this.maxBlocks) {
@@ -63,9 +83,9 @@ class BlockchainStore {
 
     }
 
-    onUpdateRpcConnectionStatus(status){
+    onUpdateRpcConnectionStatus(status) {
         let prev_status = this.rpc_connection_status;
-        if(status === "reconnect")  ChainStore.resetCache();
+        if (status === "reconnect") ChainStore.resetCache();
         else this.rpc_connection_status = status;
         if (prev_status === null && status === "error")
             this.no_ws_connection = true;

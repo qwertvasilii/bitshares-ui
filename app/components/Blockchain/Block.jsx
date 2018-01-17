@@ -17,16 +17,32 @@ class TransactionList extends React.Component {
             );
     }
 
-    render() {
-        let {block} = this.props;
-        let transactions = null;
+    /*componentWillReceiveProps(np) {        
+        if (np.height !== this.props.height) {
+            console.log("_getBlockHeader call");
+            this._getBlockHeader(np.height);
+            //this._getBlock(np.height);
+        }
+        console.log("componentWillReceiveProps call");
+        this._getTransactionBatch(np.height, 0);
+    }*/
 
+    _getTransactionBatch(block_num, start) {
+        height = parseInt(start, 10);
+        BlockchainActions.getTransactionBatch(block_num, start, start+100);
+    }
+
+    render() {
+        console.log("Begin block render");
+        let {block} = this.props;
+        //let {transactions_store} = _getTransactionBatch(this.props.height, 0); //this.props;
+        let transactions = null;
         transactions = [];
 
         if (block.transactions.length > 0) {
             transactions = [];
-
-            block.transactions.forEach((trx, index) => {
+     
+            block.transactions.splice(0,100).forEach((trx, index) => {
                 transactions.push(
                     <Transaction
                         key={index}
@@ -49,12 +65,14 @@ class Block extends React.Component {
     static propTypes = {
         dynGlobalObject: ChainTypes.ChainObject.isRequired,
         blocks: PropTypes.object.isRequired,
+        block_headers: PropTypes.object.isRequired,
         height: PropTypes.number.isRequired
     }
 
     static defaultProps = {
         dynGlobalObject: "2.1.0",
         blocks: {},
+        block_headers: {},
         height: 1
     };
 
@@ -67,21 +85,26 @@ class Block extends React.Component {
     }
 
     componentDidMount() {
-        this._getBlock(this.props.height);
+        //this._getBlock(this.props.height);
+        this._getBlockHeader(this.props.height);
     }
 
-    componentWillReceiveProps(np) {
+    componentWillReceiveProps(np) {        
         if (np.height !== this.props.height) {
-            this._getBlock(np.height);
+            console.log("_getBlockHeader call");
+            this._getBlockHeader(np.height);
+            //this._getTransactionBatch(np.height, 0);
+            //this._getBlock(np.height);
         }
     }
 
     shouldComponentUpdate(np, ns) {
         return (
-            !Immutable.is(np.blocks, this.props.blocks) ||
+            //!Immutable.is(np.blocks, this.props.blocks) ||
             np.height !== this.props.height ||
             np.dynGlobalObject !== this.props.dynGlobalObject ||
-            ns.showInput !== this.state.showInput
+            ns.showInput !== this.state.showInput ||
+            !Immutable.is(np.block_headers, this.props.block_headers)
         );
     }
 
@@ -90,6 +113,33 @@ class Block extends React.Component {
             height = parseInt(height, 10);
             if (!this.props.blocks.get(height)) {
                 BlockchainActions.getBlock(height);
+            }
+        }
+    }
+
+    _getBlockHeader(height) {
+        if (height) {
+            height = parseInt(height, 10);
+            if (!this.props.blocks.get(height)) {
+                BlockchainActions.getBlockHeader(height);
+                //console.log(this.props);
+            }
+        }
+    }
+
+    _getTransactionBatch(block_num, start) {
+        if (block_num && start) {
+            block_num = parseInt(block_num, 10);
+            start = parseInt(start, 10);
+            BlockchainActions.getTransactionBatch(block_num, start, start+100);
+        }
+    }
+
+    _getTransactionCount(height) {
+        if (height) {
+            height = parseInt(height, 10);
+            if (!this.props.block_headers.get(height)) {
+                BlockchainActions.getTransactionCount(height);
             }
         }
     }
@@ -128,8 +178,13 @@ class Block extends React.Component {
     render() {
         const { showInput } = this.state;
         let {blocks} = this.props;
+        let {block_headers} = this.props;
         let height = parseInt(this.props.height, 10);
-        let block = blocks.get(height);
+               
+        let block = block_headers.get(height);
+        if (!block)
+            block = blocks.get(height);
+        //console.log("B header ", block);
 
         let blockHeight = showInput ?
             <span className="inline-label">
@@ -160,7 +215,7 @@ class Block extends React.Component {
                             </li>
                             <li><Translate component="span" content="explorer.block.witness" />:  {block ? <LinkToWitnessById witness={block.witness} /> : null}</li>
                             <li><Translate component="span" content="explorer.block.previous" />: {block ? block.previous : null}</li>
-                            <li><Translate component="span" content="explorer.block.transactions" />: {block ? block.transactions.length : null}</li>
+                            <li><Translate component="span" content="explorer.block.transactions" />: {block ? block.transactions_count : null}</li>
                         </ul>
                         <div className="clearfix" style={{marginBottom: "1rem"}}>
                             <div className="button float-left outline" onClick={this._previousBlock.bind(this)}>&#8592;</div>

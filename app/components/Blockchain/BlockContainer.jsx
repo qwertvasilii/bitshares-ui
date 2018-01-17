@@ -14,6 +14,9 @@ class BlockContainer extends React.Component {
                   inject={{
                     blocks: () => {
                         return BlockchainStore.getState().blocks;
+                    },
+                    block_headers: () => {
+                        return BlockchainStore.getState().block_headers;                        
                     }
                   }} 
                   >
