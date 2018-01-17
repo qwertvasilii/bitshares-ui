@@ -20,7 +20,7 @@ import Icon from "../Icon/Icon";
 import AssetSelector from "../Utility/AssetSelector";
 import counterpart from "counterpart";
 import LoadingIndicator from "../LoadingIndicator";
-import {ChainValidation} from "bitsharesjs/es";
+import {ChainValidation} from "neuronjs-js/es";
 
 let lastLookup = new Date();
 

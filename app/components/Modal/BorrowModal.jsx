@@ -17,7 +17,7 @@ import FormattedPrice from "../Utility/FormattedPrice";
 import counterpart from "counterpart";
 import HelpContent from "../Utility/HelpContent";
 import Immutable from "immutable";
-import {ChainStore} from "bitsharesjs/es";
+import {ChainStore} from "neuronjs-js/es";
 
 /**
  *  Given an account and an asset id, render a modal allowing modification of a margin position for that asset

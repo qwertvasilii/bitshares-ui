@@ -121,7 +121,6 @@ module.exports = function(env) {
 
     var config = {
         entry: {
-            // vendor: ["react", "react-dom", "highcharts/highstock", "bitsharesjs", "lodash"],
             app: env.prod ?
             path.resolve(root_dir, "app/Main.js") :
             [

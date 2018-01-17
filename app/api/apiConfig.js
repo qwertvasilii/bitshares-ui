@@ -19,7 +19,7 @@ export const settingsAPIs = {
     DEFAULT_WS_NODE: "ws://fake.automatic-selection.com",
     WS_NODE_LIST: [
         {url: "wss://node.testnet.bitshares.eu", location: "Public Testnet Server (Frankfurt, Germany)"},
-        {url: "ws://89.223.30.12:11011", location: "iLink"}
+        {url: 'ws://145.239.232.7:8091', location: 'i-Link'}
     ],
     DEFAULT_FAUCET: "http://89.223.30.12:3000",
     TESTNET_FAUCET: "https://faucet.testnet.bitshares.eu",

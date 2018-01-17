@@ -1,7 +1,7 @@
 import alt from "alt-instance";
 import iDB from "idb-instance";
-import {key} from "bitsharesjs/es";
-import {ChainConfig} from "bitsharesjs-ws";
+import {key} from "neuronjs-js/es";
+import {ChainConfig} from "neuronjs-ws";
 import Immutable from "immutable";
 import BaseStore from "stores/BaseStore";
 

@@ -16,7 +16,7 @@ import WalletManagerStore from "stores/WalletManagerStore";
 import cnames from "classnames";
 import TotalBalanceValue from "../Utility/TotalBalanceValue";
 import ReactTooltip from "react-tooltip";
-import { Apis } from "bitsharesjs-ws";
+import { Apis } from "neuronjs-ws";
 import notify from "actions/NotificationActions";
 import IntlActions from "actions/IntlActions";
 import AccountImage from "../Account/AccountImage";

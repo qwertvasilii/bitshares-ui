@@ -15,7 +15,7 @@ import BorrowModal from "../Modal/BorrowModal";
 import notify from "actions/NotificationActions";
 import AccountNotifications from "../Notifier/NotifierContainer";
 import Ps from "perfect-scrollbar";
-import { ChainStore, FetchChain } from "bitsharesjs/es";
+import { ChainStore, FetchChain } from "neuronjs-js/es";
 import SettingsActions from "actions/SettingsActions";
 import cnames from "classnames";
 import market_utils from "common/market_utils";
@@ -26,7 +26,7 @@ import OpenSettleOrders from "./OpenSettleOrders";
 import Highcharts from "highcharts/highstock";
 import ExchangeHeader from "./ExchangeHeader";
 import Translate from "react-translate-component";
-import { Apis } from "bitsharesjs-ws";
+import { Apis } from "neuronjs-ws";
 import GatewayActions from "actions/GatewayActions";
 import { checkFeeStatusAsync } from "common/trxHelper";
 

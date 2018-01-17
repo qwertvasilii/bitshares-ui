@@ -14,7 +14,7 @@ import TransactionConfirmStore from "stores/TransactionConfirmStore";
 import LoadingIndicator from "../LoadingIndicator";
 import WalletActions from "actions/WalletActions";
 import Translate from "react-translate-component";
-import {ChainStore, FetchChain} from "bitsharesjs/es";
+import {ChainStore, FetchChain} from "neuronjs-js/es";
 import {BackupCreate} from "../Wallet/Backup";
 import ReactTooltip from "react-tooltip";
 import utils from "common/utils";

@@ -1,4 +1,4 @@
-import { FetchChain } from "bitsharesjs/es";
+import { FetchChain } from "neuronjs-js/es";
 import { FeedPrice, Asset } from "./MarketClasses";
 
 function checkMarginStatus(account) {

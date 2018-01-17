@@ -1,4 +1,4 @@
-import {key} from "bitsharesjs/es";
+import {key} from "neuronjs-js/es";
 
 onmessage = function(event) {
     try {

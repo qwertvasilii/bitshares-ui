@@ -5,7 +5,7 @@ import { RecentTransactions } from "../Account/RecentTransactions";
 import Translate from "react-translate-component";
 import MarketCard from "./MarketCard";
 import utils from "common/utils";
-import { Apis } from "bitsharesjs-ws";
+import { Apis } from "neuronjs-ws";
 import LoadingIndicator from "../LoadingIndicator";
 import LoginSelector from "../LoginSelector";
 import cnames from "classnames";

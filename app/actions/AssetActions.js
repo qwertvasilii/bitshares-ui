@@ -1,10 +1,10 @@
 import alt from "alt-instance";
-import {Apis} from "bitsharesjs-ws";
+import {Apis} from "neuronjs-ws";
 import utils from "common/utils";
 import WalletApi from "api/WalletApi";
 import ApplicationApi from "api/ApplicationApi";
 import WalletDb from "stores/WalletDb";
-import {ChainStore} from "bitsharesjs/es";
+import {ChainStore} from "neuronjs-js/es";
 import big from "bignumber.js";
 
 let inProgress = {};

@@ -1,6 +1,6 @@
 import React from "react";
 import {FormattedRelative} from "react-intl";
-import {ChainStore} from "bitsharesjs/es";
+import {ChainStore} from "neuronjs-js/es";
 
 class TimeAgo extends React.Component {
 

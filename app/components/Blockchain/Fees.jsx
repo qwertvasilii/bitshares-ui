@@ -8,7 +8,7 @@ import ChainTypes from "../Utility/ChainTypes";
 import BindToChainState from "../Utility/BindToChainState";
 import FormattedAsset from "../Utility/FormattedAsset";
 import {EquivalentValueComponent} from "../Utility/EquivalentValueComponent";
-import {ChainStore, ChainTypes as grapheneChainTypes} from "bitsharesjs/es";
+import {ChainStore, ChainTypes as grapheneChainTypes} from "neuronjs-js/es";
 const {operations} = grapheneChainTypes;
 let ops = Object.keys(operations);
 

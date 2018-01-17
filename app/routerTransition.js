@@ -1,5 +1,5 @@
-import {Apis, Manager} from "bitsharesjs-ws";
-import {ChainStore} from "bitsharesjs/es";
+import {Apis, Manager} from "neuronjs-ws";
+import {ChainStore} from "neuronjs-js/es";
 
 // Stores
 import iDB from "idb-instance";

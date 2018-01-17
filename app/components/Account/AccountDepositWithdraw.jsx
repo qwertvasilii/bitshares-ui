@@ -13,7 +13,7 @@ import HelpContent from "../Utility/HelpContent";
 import AccountStore from "stores/AccountStore";
 import SettingsStore from "stores/SettingsStore";
 import SettingsActions from "actions/SettingsActions";
-import { Apis } from "bitsharesjs-ws";
+import { Apis } from "neuronjs-ws";
 import { settingsAPIs, rudexAPIs } from "api/apiConfig";
 import BitKapital from "../DepositWithdraw/BitKapital";
 import RuDexGateway from "../DepositWithdraw/rudex/RuDexGateway";

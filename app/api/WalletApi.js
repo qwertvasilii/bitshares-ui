@@ -1,4 +1,4 @@
-import {SerializerValidation, TransactionBuilder, TransactionHelper} from "bitsharesjs/es";
+import {SerializerValidation, TransactionBuilder, TransactionHelper} from "neuronjs-js/es";
 import ApplicationApi from "./ApplicationApi";
 
 const WalletApi = {

@@ -12,8 +12,8 @@ import TransactionConfirmActions from "actions/TransactionConfirmActions";
 import WalletUnlockActions from "actions/WalletUnlockActions";
 import PrivateKeyActions from "actions/PrivateKeyActions";
 import AccountActions from "actions/AccountActions";
-import {ChainStore, PrivateKey, key, Aes} from "bitsharesjs/es";
-import {Apis, ChainConfig} from "bitsharesjs-ws";
+import {ChainStore, PrivateKey, key, Aes} from "neuronjs-js/es";
+import {Apis, ChainConfig} from "neuronjs-ws";
 import AddressIndex from "stores/AddressIndex";
 
 let aes_private = null;

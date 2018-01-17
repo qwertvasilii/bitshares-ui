@@ -1,4 +1,4 @@
-import {ChainStore} from "bitsharesjs/es";
+import {ChainStore} from "neuronjs-js/es";
 import React from "react";
 import IntlStore from "stores/IntlStore";
 import AccountStore from "stores/AccountStore";

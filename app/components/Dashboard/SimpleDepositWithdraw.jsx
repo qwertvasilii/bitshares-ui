@@ -16,7 +16,7 @@ import Icon from "../Icon/Icon";
 import LoadingIndicator from "../LoadingIndicator";
 import { checkFeeStatusAsync, checkBalance } from "common/trxHelper";
 import AssetName from "../Utility/AssetName";
-import { ChainStore } from "bitsharesjs/es";
+import { ChainStore } from "neuronjs-js/es";
 import { debounce } from "lodash";
 import {DecimalChecker} from "../Exchange/ExchangeInput";
 

@@ -1,5 +1,5 @@
 require("babel-polyfill");
-import {Aes} from "bitsharesjs/es";
+import {Aes} from "neuronjs-js/es";
 
 onmessage = function(event) { try {
     console.log("AesWorker start");

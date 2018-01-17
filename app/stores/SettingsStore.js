@@ -4,7 +4,7 @@ import IntlActions from "actions/IntlActions";
 import Immutable from "immutable";
 import {merge} from "lodash";
 import ls from "common/localStorage";
-import { Apis } from "bitsharesjs-ws";
+import { Apis } from "neuronjs-ws";
 import { settingsAPIs } from "api/apiConfig";
 
 const CORE_ASSET = "BTS"; // Setting this to BTS to prevent loading issues when used with BTS chain which is the most usual case currently

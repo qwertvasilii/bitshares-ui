@@ -12,8 +12,8 @@ import HelpContent from "../Utility/HelpContent";
 import Icon from "../Icon/Icon";
 import assetUtils from "common/asset_utils";
 import utils from "common/utils";
-import {ChainStore} from "bitsharesjs/es";
-import {Apis} from "bitsharesjs-ws";
+import {ChainStore} from "neuronjs-js/es";
+import {Apis} from "neuronjs-ws";
 import { Tabs, Tab } from "../Utility/Tabs";
 import { CallOrder, FeedPrice } from "common/MarketClasses";
 

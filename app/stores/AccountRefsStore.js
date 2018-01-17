@@ -2,8 +2,8 @@ import alt from "alt-instance";
 import iDB from "idb-instance";
 import Immutable from "immutable";
 import BaseStore from "./BaseStore";
-import {ChainStore} from "bitsharesjs/es";
-import {Apis} from "bitsharesjs-ws";
+import {ChainStore} from "neuronjs-js/es";
+import {Apis} from "neuronjs-ws";
 import PrivateKeyStore from "stores/PrivateKeyStore";
 import PrivateKeyActions from "actions/PrivateKeyActions";
 

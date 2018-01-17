@@ -11,8 +11,8 @@ import notify from "actions/NotificationActions";
 import {saveAs} from "file-saver";
 import cname from "classnames";
 import Translate from "react-translate-component";
-import {ChainConfig} from "bitsharesjs-ws";
-import {PrivateKey} from "bitsharesjs/es";
+import {ChainConfig} from "neuronjs-ws";
+import {PrivateKey} from "neuronjs-js/es";
 import SettingsActions from "actions/SettingsActions";
 
 const connectObject = {

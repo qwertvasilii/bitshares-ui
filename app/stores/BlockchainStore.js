@@ -1,9 +1,9 @@
 import Immutable from "immutable";
 import alt from "alt-instance";
 import BlockchainActions from "actions/BlockchainActions";
-import {ChainStore} from "bitsharesjs/es";
+import {ChainStore} from "neuronjs-js/es";
 import {Block} from "./tcomb_structs";
-//import { block_header } from "bitsharesjs/es/serializer/src/operations";
+//import { block_header } from "neuronjs-js/es/serializer/src/operations";
 
 class BlockchainStore {
     constructor() {
